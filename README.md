@@ -1,6 +1,6 @@
 # server-deployment-practice
 
-This repository contains a simple web server built using Node.js and Express. The server provides an API for managing a collection of books.
+This repository contains a Book Management API web server built using Node.js and Express. The server provides an API for managing a collection of books.
 
 ## Features
 
