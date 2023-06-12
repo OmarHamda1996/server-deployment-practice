@@ -1,0 +1,31 @@
+GET http://localhost:3000/books
+
+###
+
+GET http://localhost:3000/books/1
+
+###
+
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "title": "Blaah",
+  "author": "Omar Hamada"
+}
+
+###
+
+PUT http://localhost:3000/books/1
+Content-Type: application/json
+
+{
+  "title": "Updated Book",
+  "author": "Jane Doe"
+}
+
+###
+
+DELETE http://localhost:3000/books/1
+
+
