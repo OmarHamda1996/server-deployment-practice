@@ -2,6 +2,14 @@
 
 This repository contains a Book Management API web server built using Node.js and Express. The server provides an API for managing a collection of books.
 
+##Actions 
+
+[Actions](https://github.com/OmarHamda1996/server-deployment-practice/actions)
+
+##Pull Requests
+
+[Closed Pull Requests](https://github.com/OmarHamda1996/server-deployment-practice/pulls?q=is%3Apr+is%3Aclosed)
+
 ## Features
 
 - **Get All Books**: Retrieve a list of all books available in the collection.
