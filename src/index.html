@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Omar's Book Management API Test</title>
+</head>
+<body>
+  <h1>Book Management API Test</h1>
+
+  <button onclick="getBooks()">Get All Books</button>
+  <div id="get-result"></div>
+
+  <h2>Add New Book</h2>
+  <form id="add-form" onsubmit="addBook(event)">
+    <label for="title">Title:</label>
+    <input type="text" id="title" required>
+    <label for="author">Author:</label>
+    <input type="text" id="author" required>
+    <button type="submit">Add Book</button>
+  </form>
+
+
+  <h2>Update Book</h2>
+  <form id="update-form" onsubmit="updateBook(event)">
+    <label for="update-id">Book ID:</label>
+    <input type="text" id="update-id" required>
+    <label for="update-title">New Title:</label>
+    <input type="text" id="update-title" required>
+    <label for="update-author">New Author:</label>
+    <input type="text" id="update-author" required>
+    <button type="submit">Update Book</button>
+  </form>
+
+
+  <h2>Delete Book</h2>
+  <form id="delete-form" onsubmit="deleteBook(event)">
+    <label for="delete-id">Book ID:</label>
+    <input type="text" id="delete-id" required>
+    <button type="submit">Delete Book</button>
+  </form>
+
+  <script>
+    function getBooks() {
+      fetch('https://omars-book-management-api-web.onrender.com/books')
+        .then(response => response.json())
+        .then(data => {
+          const resultDiv = document.getElementById('get-result');
+          resultDiv.innerHTML = JSON.stringify(data);
+        });
+    }
+
+    function addBook(event) {
+      event.preventDefault();
+      const title = document.getElementById('title').value;
+      const author = document.getElementById('author').value;
+      const book = { title, author };
+
+      fetch('https://omars-book-management-api-web.onrender.com/books', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(book)
+      })
+        .then(response => response.json())
+        .then(data => console.log(data));
+    }
+
+    function updateBook(event) {
+      event.preventDefault();
+      const id = document.getElementById('update-id').value;
+      const title = document.getElementById('update-title').value;
+      const author = document.getElementById('update-author').value;
+      const book = { title, author };
+
+      fetch(`https://omars-book-management-api-web.onrender.com/books/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(book)
+      })
+        .then(response => response.json())
+        .then(data => console.log(data));
+    }
+
+    function deleteBook(event) {
+      event.preventDefault();
+      const id = document.getElementById('delete-id').value;
+
+      fetch(`https://omars-book-management-api-web.onrender.com/books/${id}`, {
+        method: 'DELETE'
+      })
+        .then(response => response.json())
+        .then(data => console.log(data));
+    }
+  </script>
+</body>
+</html>
